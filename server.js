@@ -14,6 +14,12 @@ const path = require('path');
 const middleware = require('./utils/middleware')
 
 const skills = require('./models/skills')
+
+//import controllers here
+const skillsRouter = require('./controllers/skillsControllers');
+const { features } = require('process');
+
+
 //this is where we import our routes
 //our routes determine the request/response cycle of our app.
 //when i hit a route it should run a controller
@@ -63,6 +69,8 @@ app.get('/', (req, res) => {
     console.log('this are the skills', skills)
     res.render('layout.ejs')
 })
+
+app.use('/skills', skillsRouter)
 
 // server listener
 const PORT = process.env.PORT
